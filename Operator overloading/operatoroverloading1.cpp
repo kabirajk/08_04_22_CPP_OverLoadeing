@@ -1,33 +1,33 @@
 #include <iostream>
 using namespace std;
 
-class time
+class TIME
 {
     private:
     int HH;
     int MM;
     int is_pm;
     public:
-     time()//:HH{0},MM{0}{}
+     TIME()//:HH{0},MM{0}{}
     {
         HH=0;
         MM=0;
     }
-    time(int hrs,int min=0,int pm=0)
+    TIME(int hrs,int min=0,int pm=0)
     {
        HH=hrs;
        MM=min; 
        is_pm=pm;
     }
-    void set_time(int hrs=0,int min=0,int pm=0)
+    void set_TIME(int hrs=0,int min=0,int pm=0)
     {
        HH=hrs;
        MM=min;
        is_pm=pm;
     }
-    friend ostream & operator<<(ostream& out,time &t);
-    friend time operator+(time &current,int x);
-    void operator+(time &update)
+    friend ostream & operator<<(ostream& out,TIME &t);
+    friend void operator+(TIME &current,int x);
+    void operator+(TIME &update)
     {   
         int totalminutes=update.HH*60+update.MM+MM+60*HH;
         is_pm=totalminutes%1440<720?is_pm:!is_pm;
@@ -37,7 +37,7 @@ class time
     }
     
 };
-ostream& operator <<(ostream& out,time &t)
+ostream& operator <<(ostream& out,TIME &t)
 {
     out.width(2);
     out.fill('0');
@@ -49,9 +49,10 @@ ostream& operator <<(ostream& out,time &t)
         out<<" AM";
     else
         out<<" PM";
+    return out;
 }
 
-time operator+(time& current,int x)
+void operator+(TIME& current,int x)
 {   
     current.is_pm= x%1440<720?current.is_pm:!current.is_pm;
     int totalminutes=current.HH*60+current.MM+x;
@@ -62,16 +63,16 @@ time operator+(time& current,int x)
 
 int main()
 {   //
-    time t;
+    TIME t;
     // t.HH=12;
     // t.MM=20;
-    t.set_time(12,20,0);
+    t.set_TIME(12,20,0);
     cout<<t<<endl;
     t+820;
     // cout.width(2);
     cout<<t<<endl;
-    time t2;
-    t2.set_time(12,0,0);
+    TIME t2;
+    t2.set_TIME(12,0,0);
     t+t2;
     cout<<t;
 
