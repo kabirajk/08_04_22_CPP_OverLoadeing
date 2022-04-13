@@ -35,6 +35,7 @@ ostream& operator<<(ostream& out,Fraction f)
             out<<f.neumerator<<"/"<<f.denominator<<endl;
         else
             out<<f.mixed<<"*"<<"("<<f.neumerator<<"/"<<f.denominator<<")"<<"="<<f.mixed*f.denominator+f.neumerator<<endl;
+        return out;
     }
 int main()
 {
