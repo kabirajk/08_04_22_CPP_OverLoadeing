@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int adder()
+void adder()
 {
     cout<<"int"<<endl;
 }
-int adder(float f)
+void adder(float f)
 {
     cout<<"float"<<endl;
 }
